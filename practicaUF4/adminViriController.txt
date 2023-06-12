@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class AdminViriController extends AbstractController
+{
+    #[Route('/admin/viri', name: 'app_admin_viri')]
+    public function index(): Response
+    {
+        $name = 'José Viri';
+        $user = [
+            'name' => 'John',
+            'fullName' => 'John Doe',
+            'email' => 'johndoe@example.com',
+            'profileImageUrl' => '',
+        ];
+        $comment = ['publishedAt' => new \DateTime()];
+        $title = "Hola José Luis Viri esto es el titulo";
+        $gaTrackingCode = 'UA-XXXXXXXXXX';
+        $articles = [
+            ['title' => 'Articulo 1', 'slug' => 'articulo-1'],
+            ['title' => 'Articulo 2', 'slug' => 'articulo-2'],
+            ['title' => 'Articulo 3', 'slug' => 'articulo-3'],
+        ];
+        $product = [
+            'title' => 'Producto A',
+            'name' => 'Producto A',
+            'price' => 10.99,
+        ];
+        return $this->render('admin_viri/index.html.twig', [
+            'controller_name' => 'AdminViriController',
+            'title' => $title,
+            'user' => $user,
+            'comment' => $comment,
+            'ga_tracking' => $gaTrackingCode,
+            'articles' => $articles,
+            'name' => $name,
+            'product' => $product,
+        ]);
+    }
+}
